@@ -30,8 +30,9 @@ for i in range(5):
                 PrimeQ = False
         if PrimeQ == True:
             numPrimes += 1
-
-    results.append(time.time()-startTime)
+    endTime = time.time()
+    print(endTime - startTime)
+    results.append(endTime-startTime)
 
 print("Single Process (seconds): " + str(sum(results)/5))
 print("Sanity check: " + str(numPrimes))
@@ -72,7 +73,9 @@ for i in range(5):
         p.join()
     # Get process results from the output queue
     numPrimes = sum([output.get() for p in processes])
-    results.append(time.time()-startTime)
+    endTime = time.time()
+    print(endTime - startTime)
+    results.append(endTime-startTime)
 
 print("Multiprocess ("+str(numCores)+" cores) (seconds): " + str(sum(results)/5))
 print("Sanity check: " + str(numPrimes))
